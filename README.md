@@ -19,4 +19,4 @@ Clone the repo and run:
 ```bash
 git clone https://github.com/neo4-svg/packet-mirage.git
 cd packet-mirage
-python3 mirage.py
+python3 packet_mirage.py
