@@ -25,3 +25,38 @@ It blends noise (HTTP, DNS, ICMP) with your legitimate traffic, making it harder
 git clone https://github.com/neo4-svg/packet-mirage.git
 cd packet-mirage
 python3 packet_mirage.py
+```
+
+---
+
+## Updates
+
+### New: WiFi Positioning Integration (wifi-posit.py)
+
+We've added **wifi-posit.py**, a companion tool for WiFi-based positioning and location spoofing. This module enhances Packet Mirage by:
+
+- Detecting and spoofing WiFi access point signals
+- Simulating location data across multiple WiFi networks
+- Providing realistic WiFi positioning obfuscation
+- Integrating seamlessly with Packet Mirage's traffic generation
+
+This addition strengthens privacy by masking not just your network traffic, but also your physical location inference based on WiFi networks.
+
+**Usage:**
+```bash
+python3 wifi_posit.py --mode spoof --intensity high
+```
+
+For more details, see [wifi_posit.py documentation](wifi_posit.py).
+
+---
+
+## Usage
+
+[Add your usage documentation here]
+
+---
+
+## License
+
+MIT License - See [LICENSE](LICENSE) for details
