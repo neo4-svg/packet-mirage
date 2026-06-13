@@ -2,27 +2,26 @@
 
 [![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/neo4-svg/packet-mirage)](https://github.com/neo4-svg/packet-mirage/stargazers)
-[![Code style: python](https://img.shields.io/badge/Code%20style-Python-blue)](https://www.python.org/)
 
-**Packet Mirage** is a lightweight network obfuscation tool that generates randomized traffic to major IP ranges (Google, Microsoft, Amazon).  
-By blending fake signals with real connections, it disrupts sniffers, confuses outdated monitoring setups, and masks traffic patterns — acting like a partial VPN for added privacy.
+**Packet Mirage** is a lightweight network obfuscation tool that generates randomized fake traffic to mask your real network activity.
+
+It blends noise (HTTP, DNS, ICMP) with your legitimate traffic, making it harder for basic sniffers, ISP monitoring, or simple traffic analysis to profile you.
+
+---
 
 ## Features
-- Randomized ICMP, DNS, HTTP, and ARP packets
-- Targets trusted cloud IP ranges for camouflage
-- Obfuscates traffic fingerprints and timing analysis
-- Lightweight CLI design, easy to run on Linux
 
-## Use Cases
-- Hide browsing patterns from basic ISP monitoring
-- Confuse attackers using outdated sniffers
-- Add a deception layer to network defense
+- Multiple modes: **HTTP**, **DNS**, **ICMP**, and **Mixed**
+- Adjustable intensity (Low → Insane)
+- Lightweight and fast (pure Python + raw sockets)
+- Easy to run on Linux
+- Educational & defensive research focused
+
+---
 
 ## Installation
-Clone the repo and run:
+
 ```bash
 git clone https://github.com/neo4-svg/packet-mirage.git
 cd packet-mirage
 python3 packet_mirage.py
-```
