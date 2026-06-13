@@ -53,7 +53,7 @@ sudo python3 packet_mirage.py
    - `medium` - 1 second delay (default)
    - `high` - 0.5 second delay
    - `max` - 0.1 second delay
-   - `insane` - 0.01 second delay (intense)
+   - `insane` - 0.01 second delay (intense) ⚠️ **NOT RECOMMENDED** (see warning below)
 
 3. **Duration:**
    - Enter time in seconds or leave blank for infinite runtime
@@ -97,7 +97,7 @@ sudo python3 wifi_poison.py
    - `low` - Soft disconnect (40 pps)
    - `medium` - Good effect (100 pps) - default
    - `high` - Strong attack (200 pps)
-   - `insane` - Very aggressive (350 pps)
+   - `insane` - Very aggressive (350 pps) ⚠️ **NOT RECOMMENDED** (see warning below)
 
 5. **Duration:**
    - Attack duration in seconds (default: 15)
@@ -143,7 +143,40 @@ sudo pip install scapy
 
 ## Security & Legal Notice
 
-⚠️ **Disclaimer:** This tool is for **educational and authorized security testing only**. Unauthorized network attacks are illegal. Always have explicit written permission before testing on networks you don't own.
+⚠️ **CRITICAL WARNING - READ BEFORE USE**
+
+### Insane Mode - NOT RECOMMENDED
+
+The **"insane" intensity level** is provided for research purposes only and comes with serious risks:
+
+**Risks of Insane Mode:**
+- 🚨 **Router Damage:** Extremely high packet rates can overwhelm and crash home/small office routers
+- 🚨 **ISP Detection:** ISP monitoring systems can flag massive traffic spikes as potential attacks, leading to:
+  - Account suspension or termination
+  - IP address blacklisting
+  - Network throttling/rate limiting
+  - Legal investigation or contact
+- 🚨 **Network Instability:** Can render your entire connection unusable
+- 🚨 **Hardware Failure:** Repeated insane mode usage may damage networking hardware
+
+**Who Should Use Insane Mode:**
+- ✅ Only authorized penetration testers in **legal test environments**
+- ✅ Only in **isolated lab networks** with permission
+- ✅ Only in **enterprise legal operations** with proper authorization
+- ✅ Never on ISP-provided residential internet
+
+**Recommendation:**
+Use `high` or `medium` intensity for normal operations. Only use `insane` if:
+1. You have explicit written authorization
+2. You're testing your own isolated network
+3. You understand the legal consequences
+4. You accept full responsibility
+
+### General Legal Disclaimer
+
+⚠️ **Disclaimer:** This tool is for **educational and authorized security testing only**. Unauthorized network attacks are illegal. Always have explicit written permission before testing on networks you don't own or manage.
+
+**Use this tool at your own risk.** The authors assume no liability for misuse or legal consequences.
 
 See [Disclaimer.md](Disclaimer.md) for full legal information.
 
