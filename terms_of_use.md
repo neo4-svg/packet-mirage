@@ -6,7 +6,7 @@
 
 ## 1. Acceptance of Terms
 
-By downloading, installing, accessing, or using Packet Mirage (including all associated tools, scripts, documentation, and derivatives), you agree to be bound by these Terms of Use in their entirety. If you do not agree to any part of these terms, you must **cease all use immediately** and uninstall the software.
+By downloading, installing, accessing, or using Packet Mirage (including `packet_mirage.py`, `arp.py`, `wifi_poison.py`, documentation, and all related code), you agree to be bound by these Terms of Use in their entirety.
 
 These terms are in addition to, and not instead of, the Disclaimer.md file included in this project.
 
@@ -14,143 +14,185 @@ These terms are in addition to, and not instead of, the Disclaimer.md file inclu
 
 ## 2. Definitions
 
-- **"Software"** - The Packet Mirage project, including but not limited to `packet_mirage.py`, `wifi_poison.py`, documentation, and all related code
-- **"Network"** - Any computer network, WiFi network, local area network (LAN), wide area network (WAN), or internet-connected infrastructure
-- **"User"** - Any individual, organization, or entity downloading, installing, or using the Software
-- **"Owner"** - The person, organization, or entity that owns or administers a Network
+- **"Software"** - The Packet Mirage project, including `packet_mirage.py`, `arp.py`, `wifi_poison.py`, documentation, and all related code
+- **"packet_mirage.py"** - Traffic obfuscation tool that generates fake HTTP, DNS, and ICMP packets
+- **"arp.py"** - ARP reconnaissance tool for network mapping and traffic analysis
+- **"wifi_poison.py"** - WiFi deauthentication attack tool
+- **"Network"** - Any computer network, WiFi network, LAN, WAN, or internet-connected infrastructure
+- **"User"** - Any individual, organization, or entity downloading or using the Software
+- **"Owner"** - The person or entity that owns or administers a Network
 - **"Authorized Testing"** - Security testing conducted with explicit written permission from the Network Owner
-- **"Unauthorized Access"** - Any use of the Software without proper authorization from the Network Owner
-- **"Malicious Intent"** - Any use of the Software to cause harm, disruption, or illegal activity
+- **"Unauthorized Access"** - Any use of the Software without proper authorization
 
 ---
 
-## 3. Licensing & Intellectual Property
+## 3. Tool-Specific Definitions
 
-- All code, documentation, and associated materials are provided under the applicable open-source license (see LICENSE file)
+### 3.1 Traffic Obfuscation (packet_mirage.py)
+- Generates fake network traffic across HTTP, DNS, and ICMP protocols
+- Supports intensity levels: low (2.0s), medium (1.0s), high (0.5s), max (0.1s), insane (0.01s)
+- Requires raw socket access (sudo/root privileges)
+- Lower risk profile - intended for privacy demonstration
+
+### 3.2 Network Reconnaissance (arp.py)
+- Captures and analyzes ARP packets on local networks
+- Maps ARP communication patterns and IP relationships
+- Generates JSON exports of network topology data
+- Requires sudo/root privileges and network interface access
+- Moderate risk profile - constitutes network reconnaissance
+
+### 3.3 WiFi Attacks (wifi_poison.py)
+- Sends IEEE 802.11 deauthentication frames
+- Requires monitor mode interface setup
+- Supports power levels: low (40 pps), medium (100 pps), high (200 pps), insane (350 pps)
+- High risk profile - constitutes direct network attack
+
+---
+
+## 4. Licensing & Intellectual Property
+
+- All code and documentation are provided under the applicable open-source license (see LICENSE)
 - The Software is provided "AS IS" without warranty of any kind
-- Users retain the right to use, modify, and distribute the Software in accordance with the applicable license
-- **Condition:** All modifications and distributions must include these Terms of Use and the Disclaimer.md file
-- You may not use the Software name, branding, or reputation for purposes contrary to these terms
+- Users retain the right to use, modify, and distribute in accordance with the license
+- **Condition:** All modifications must include these Terms of Use and Disclaimer.md
+- You may not use the Software name or branding for purposes contrary to these terms
 
 ---
 
-## 4. Mandatory Authorization Requirements
+## 5. Mandatory Authorization Requirements
 
-### 4.1 Explicit Written Permission
+### 5.1 Explicit Written Permission
 
-**You MUST obtain explicit written authorization before using any part of the Software on any Network.**
+**You MUST obtain explicit written authorization before using any tool on any Network.**
 
-- "Written permission" means documented approval (email, signed contracts, formal authorization letters, etc.)
+- "Written permission" means documented approval (email, signed contracts, formal letters)
 - Verbal permission is **NOT** sufficient
 - Implied consent is **NOT** acceptable
 - Permission must come directly from the Network Owner or authorized administrator
 - Keep all authorization documentation for your records
 
-### 4.2 Scope of Authorization
+### 5.2 Scope of Authorization
 
 Your authorization must explicitly cover:
 - **What networks** can be tested (by IP range, SSID, or network name)
-- **Which tools** are authorized for use (packet_mirage.py, wifi_poison.py, or both)
+- **Which tools** are authorized (packet_mirage.py, arp.py, wifi_poison.py, or combination)
 - **Duration** of authorized testing (start and end dates)
 - **Frequency** and timing of tests
-- **Scope** of testing objectives
+- **Scope** of testing objectives and limitations
 
-### 4.3 Third-Party Networks
+### 5.3 Tool-Specific Authorization
+
+**packet_mirage.py Authorization:**
+- Specify networks where traffic obfuscation is permitted
+- Define acceptable intensity levels
+- Document duration and frequency
+- State purpose (research, defense testing, etc.)
+
+**arp.py Authorization:**
+- Explicitly permit network reconnaissance/mapping
+- Define network scope and subnets to analyze
+- Authorize data collection and JSON exports
+- Specify retention and use of collected data
+
+**wifi_poison.py Authorization:**
+- **MUST be explicit and specific** for any WiFi testing
+- Define target WiFi networks/BSSIDs
+- Authorize specific power levels and frequencies
+- Specify affected client devices or ranges
+- Document rules of engagement and test windows
+
+### 5.4 Third-Party Networks
 
 You are **strictly prohibited** from using the Software on:
-- Networks owned by third parties without their authorization
-- Public WiFi networks (even if you have internet access)
-- Corporate networks without explicit IT department approval
+- Networks owned by third parties without authorization
+- Public WiFi networks (regardless of access level)
+- Corporate networks without IT department approval
 - Government networks or infrastructure
-- Educational institution networks without administrator permission
+- Educational networks without administrator permission
 - Healthcare networks or critical infrastructure
 - Financial institution networks
 - Any network you do not own or lack written authorization for
 
 ---
 
-## 5. Prohibited Uses
+## 6. Prohibited Uses
 
 **The following uses are strictly prohibited:**
 
-### 5.1 Attacks & Unauthorized Access
-- Using the Software to attack, disrupt, or interfere with any Network
-- Attempting to gain unauthorized access to systems or data
-- Launching denial-of-service (DoS) or distributed denial-of-service (DDoS) attacks
-- Using wifi_poison.py to disconnect users without authorization
-- Any form of unauthorized network interference
+### 6.1 Traffic Obfuscation Misuse (packet_mirage.py)
+- Using to evade legitimate network security monitoring
+- Obfuscating malicious traffic or attacks
+- Bypassing network security controls
+- Evading intrusion detection systems (IDS/IPS)
+- Masking unauthorized activities
 
-### 5.2 Circumvention & Evasion
-- Bypassing security measures, firewalls, or authentication systems
+### 6.2 Reconnaissance Misuse (arp.py)
+- Unauthorized network mapping or topology discovery
+- Eavesdropping on network communications
+- Collecting data about networks you don't own
+- Network surveillance without consent
+- Creating detailed network maps for attack planning
+- Sharing collected data with unauthorized parties
+
+### 6.3 WiFi Attack Misuse (wifi_poison.py)
+- Using to attack, disrupt, or interfere with any Network
+- Disconnecting users without authorization
+- Launching denial-of-service (DoS) attacks
+- Testing networks without explicit written permission
+- Any form of unauthorized network interference
+- Criminal harassment through WiFi disruption
+
+### 6.4 General Prohibited Activities
+- Bypassing security measures, firewalls, or authentication
+- Gaining unauthorized access to systems or data
 - Evading detection from security tools with malicious intent
 - Masking identity to conduct unauthorized activities
-- Circumventing network monitoring for illegal purposes
-
-### 5.3 Data & Privacy Violations
-- Intercepting, capturing, or accessing others' private communications
 - Stealing, modifying, or accessing confidential data
-- Monitoring network traffic for purposes other than authorized testing
-- Violating privacy laws or regulations (GDPR, CCPA, HIPAA, etc.)
-- Creating detailed network maps without authorization
-
-### 5.4 Malicious & Harmful Intent
-- Using the Software for any illegal, unethical, or harmful purpose
-- Conducting fraud, extortion, blackmail, or any criminal activity
-- Harassing, threatening, or targeting individuals or organizations
-- Interfering with critical infrastructure or essential services
-- Sabotage, vandalism, or intentional damage to networks
-
-### 5.5 Misrepresentation
+- Violating privacy laws (GDPR, CCPA, HIPAA, etc.)
+- Illegal, unethical, or harmful purposes
+- Conducting fraud, extortion, blackmail, or criminal activity
 - Impersonating authorized security personnel
-- Falsely claiming authorization you do not possess
-- Misrepresenting the purpose of testing
 - Using deceptive tactics to gain network access
-
-### 5.6 Redistribution for Malicious Purpose
-- Distributing the Software with malicious modifications
-- Packaging the Software with malware or spyware
-- Removing or altering legal disclaimers and warnings
-- Creating derivatives intended for attacks or illegal use
 
 ---
 
-## 6. Authorized Use Cases
+## 7. Authorized Use Cases
 
 The Software is authorized for use **ONLY** in the following scenarios:
 
-### 6.1 Personal Testing on Your Own Networks
+### 7.1 Personal Testing on Your Own Networks
 - Testing on networks that you own and administer
 - Devices connected via networks you control
-- Home WiFi networks you own
+- Home networks you own and manage
 - Personal lab or sandbox environments
 - Authorized corporate networks under your administration
 
-### 6.2 Authorized Penetration Testing
+### 7.2 Authorized Penetration Testing
 - Professional security assessments with written scope agreements
 - Red team exercises with explicit authorization and rules of engagement
-- Authorized vulnerability assessments conducted by qualified professionals
+- Authorized vulnerability assessments by qualified professionals
 - Network security testing as part of official job responsibilities
 - Contractual security testing arrangements
 
-### 6.3 Educational & Research Settings
-- University or educational institution lab environments
-- Classroom demonstrations with instructor authorization
+### 7.3 Educational & Research Settings
+- University lab environments with instructor authorization
+- Classroom demonstrations with explicit permission
 - Controlled research environments in academic settings
 - Security conferences or workshops with proper authorization
 - Published security research with ethical review
 
-### 6.4 Network Administration & Maintenance
+### 7.4 Network Administration & Maintenance
 - Testing security measures on networks you administer
 - Validating security controls and defenses
-- Monitoring your own network for compliance
+- Authorized network diagnostics and troubleshooting
 - Operational security testing as part of your role
 - Documentation and verification of network capabilities
 
 ---
 
-## 7. Liability Disclaimer
+## 8. Liability Disclaimer
 
-### 7.1 No Warranty
+### 8.1 No Warranty
 The Software is provided "AS IS" without any warranties, express or implied, including:
 - Fitness for a particular purpose
 - Merchantability or non-infringement
@@ -158,18 +200,21 @@ The Software is provided "AS IS" without any warranties, express or implied, inc
 - Lack of bugs or defects
 - Performance or stability guarantees
 
-### 7.2 Limitation of Liability
-The authors, contributors, maintainers, and distributors of Packet Mirage are **NOT responsible** for:
-- Any damages, losses, or harm resulting from use of the Software
+### 8.2 Limitation of Liability
+The authors, contributors, and maintainers are **NOT responsible** for:
+- Any damages, losses, or harm from use of the Software
 - Criminal charges, civil lawsuits, or legal consequences
 - Network disruptions, data loss, or service interruptions
 - Unauthorized access or security breaches
 - Violations of law or regulation
 - Misuse of the Software
 - Any direct, indirect, incidental, or consequential damages
+- WiFi disruption, device interference, or network damage
+- ARP spoofing incidents or data interception
+- ISP account suspension or blacklisting
 
-### 7.3 Indemnification
-You agree to indemnify, defend, and hold harmless the authors, contributors, and maintainers from any and all claims, damages, liabilities, costs, or expenses (including legal fees) arising from:
+### 8.3 Indemnification
+You agree to indemnify, defend, and hold harmless the authors, contributors, and maintainers from:
 - Your use of the Software
 - Your violation of these Terms of Use
 - Your violation of any law or regulation
@@ -179,17 +224,18 @@ You agree to indemnify, defend, and hold harmless the authors, contributors, and
 
 ---
 
-## 8. Legal Compliance Requirements
+## 9. Legal Compliance Requirements
 
-### 8.1 Applicable Laws
+### 9.1 Applicable Laws
 
-You agree to comply with all applicable laws and regulations, including but not limited to:
+You agree to comply with all applicable laws and regulations, including:
 
 **United States:**
 - Computer Fraud and Abuse Act (CFAA)
 - Wiretap Act and Electronic Communications Privacy Act (ECPA)
 - Children's Online Privacy Protection Act (COPPA)
-- Various state and local computer crime statutes
+- FCC regulations on radio frequency interference
+- State and local computer crime statutes
 
 **European Union:**
 - Network and Information Systems Regulations (NIS2)
@@ -207,63 +253,66 @@ You agree to comply with all applicable laws and regulations, including but not 
 - Network interference prohibitions
 - Data protection and privacy regulations
 - Wiretapping and interception laws
-- Critical infrastructure protection laws
+- Radio frequency and WiFi regulations
 
-### 8.2 Jurisdiction-Specific Risks
+### 9.2 Jurisdiction-Specific Risks
 
 **United States:**
-- Violation of CFAA can result in civil liability and criminal penalties up to 10 years imprisonment
-- WiFi hacking is treated as serious felony in most jurisdictions
+- CFAA violations: up to 10 years imprisonment
+- WiFi hacking treated as serious felony in most jurisdictions
+- FCC fines for unlicensed RF transmission
 - State laws may impose additional penalties
 
 **European Union:**
-- NIS2 violations subject to significant fines
-- GDPR violations can result in substantial penalties
-- Member states have independent cybercrime laws with severe penalties
+- NIS2 violations: substantial fines
+- GDPR violations: significant monetary penalties
+- Member states have independent cybercrime laws
 
 **United Kingdom:**
-- Computer Misuse Act violations carry up to 10 years imprisonment
-- Data Protection Act violations subject to substantial fines
+- Computer Misuse Act: up to 10 years imprisonment
+- Data Protection Act: substantial fines
 
 **Other Countries:**
-- Most countries treat unauthorized network access as criminal offense
-- Penalties vary from fines to imprisonment
-- Some countries have harsher penalties for critical infrastructure attacks
+- Most treat unauthorized network access as criminal offense
+- Penalties range from fines to imprisonment
+- Some have harsher penalties for infrastructure attacks
 
-### 8.3 Due Diligence
+### 9.3 Due Diligence
 
 Before using the Software, you must:
 - Consult legal counsel in your jurisdiction
-- Understand the specific laws applicable to your location
+- Understand specific laws applicable to your location
 - Obtain all necessary authorizations and permissions
 - Document all compliance efforts
 - Keep records of authorizations
-- Maintain audit trails of your testing
+- Maintain audit trails of testing
 
 ---
 
-## 9. Authorization & Documentation Requirements
+## 10. Authorization & Documentation Requirements
 
-### 9.1 Required Documentation
+### 10.1 Required Documentation
 
 Before conducting any testing, you **MUST** have:
 - Written authorization from the Network Owner
 - Scope of work document defining authorized activities
-- Rules of engagement for the testing
+- Rules of engagement for testing
 - Timeline for authorized testing activities
 - Contact information for escalation
 - Documentation of permissions
+- For wifi_poison.py: specific target BSSIDs and approval for deauthentication
 
-### 9.2 Record Retention
+### 10.2 Record Retention
 
 You must maintain and retain:
 - All authorization documents for at least **3 years**
-- Logs of all testing activities and their dates
-- Results and findings from your testing
+- Logs of all testing activities and dates
+- Results and findings from testing
 - Any incidents or issues encountered
 - Communication with Network Owner
+- Copies of authorization scope documents
 
-### 9.3 Reporting & Transparency
+### 10.3 Reporting & Transparency
 
 When conducting authorized testing:
 - Maintain transparency with the Network Owner
@@ -271,24 +320,23 @@ When conducting authorized testing:
 - Avoid unnecessary disclosure of vulnerabilities
 - Follow responsible disclosure practices
 - Document all activities for compliance
+- Provide clear reports of test scope and results
 
 ---
 
-## 10. Responsible Disclosure
+## 11. Responsible Disclosure
 
 If you discover vulnerabilities while using the Software:
 
-### 10.1 Vulnerability Reporting
-
+### 11.1 Vulnerability Reporting
 - Report findings only to the Network Owner (not publicly)
 - Provide technical details to help remediation
 - Allow reasonable time for fixing before disclosure
 - Use secure communication channels
 - Do not exploit vulnerabilities beyond testing scope
 
-### 10.2 Coordinated Disclosure
-
-- Work with the Network Owner on timeline for fixes
+### 11.2 Coordinated Disclosure
+- Work with the Network Owner on fix timeline
 - Do not discuss vulnerabilities with unauthorized parties
 - Follow responsible disclosure standards
 - Consider embargo periods for critical vulnerabilities
@@ -296,9 +344,9 @@ If you discover vulnerabilities while using the Software:
 
 ---
 
-## 11. User Responsibilities
+## 12. User Responsibilities
 
-### 11.1 Your Obligations
+### 12.1 Your Obligations
 
 By using the Software, you agree to:
 - Take full responsibility for your actions
@@ -309,19 +357,21 @@ By using the Software, you agree to:
 - Use the Software ethically and professionally
 - Maintain confidentiality of findings
 - Report any security incidents promptly
+- Understand the specific capabilities and risks of each tool
 
-### 11.2 Acknowledgment of Risks
+### 12.2 Acknowledgment of Risks
 
 You acknowledge and accept:
 - The Software is powerful and can cause harm if misused
 - Unauthorized use is illegal with serious consequences
+- Each tool has specific legal and technical risks
 - You understand the legal and ethical implications
 - You have reviewed all warnings and disclaimers
 - You accept full legal responsibility for your actions
 
 ---
 
-## 12. Termination of Rights
+## 13. Termination of Rights
 
 Your right to use the Software is **immediately terminated** if you:
 - Violate any provision of these Terms of Use
@@ -339,9 +389,9 @@ Upon termination, you must:
 
 ---
 
-## 13. No Support or Maintenance
+## 14. No Support or Maintenance
 
-- The Software is provided without any support, maintenance, or updates
+- The Software is provided without support or maintenance
 - The authors make no guarantee of continued availability
 - Bug fixes, patches, or improvements are not guaranteed
 - You are responsible for staying informed of security issues
@@ -349,21 +399,15 @@ Upon termination, you must:
 
 ---
 
-## 14. Modifications to Terms
+## 15. Modifications to Terms
 
-The authors reserve the right to modify these Terms of Use at any time. Continued use of the Software after modifications constitutes acceptance of updated terms.
-
----
-
-## 15. Severability
-
-If any provision of these Terms is found to be unenforceable, that provision shall be modified to the minimum extent necessary to make it enforceable while maintaining the intent. The remainder of these terms shall remain in full force and effect.
+The authors reserve the right to modify these Terms of Use at any time. Continued use after modifications constitutes acceptance.
 
 ---
 
 ## 16. Entire Agreement
 
-These Terms of Use, together with the Disclaimer.md file, constitute the entire agreement between you and the authors regarding the Software. Any prior negotiations, representations, or agreements are superseded by these terms.
+These Terms of Use, together with the Disclaimer.md file, constitute the entire agreement between you and the authors regarding the Software.
 
 ---
 
@@ -371,61 +415,32 @@ These Terms of Use, together with the Disclaimer.md file, constitute the entire 
 
 - These terms are governed by applicable laws where you reside
 - You are responsible for understanding and complying with local laws
-- The authors disclaim any liability for violations of local or international law
-- Disputes shall be resolved according to the laws of your jurisdiction
+- The authors disclaim liability for violations of local or international law
 - You waive any claim that these terms are unenforceable in your location
 
 ---
 
-## 18. Contact & Questions
-
-If you have questions about:
-- **Legal implications:** Consult a lawyer specializing in cybersecurity law
-- **Authorization requirements:** Contact the Network Owner directly
-- **Technical issues:** Refer to project documentation or issue tracker
-- **Ethical concerns:** Seek guidance from security professionals
-
----
-
-## 19. Final Acknowledgment
+## 18. Final Acknowledgment
 
 **By using Packet Mirage, you explicitly acknowledge and agree to:**
 
-1. ✅ You have read, understood, and agree to all terms herein
+1. ✅ You have read and understood all terms herein
 2. ✅ You understand the legal consequences of unauthorized use
 3. ✅ You will obtain explicit written authorization before testing any network
-4. ✅ You will use the Software only for lawful and authorized purposes
+4. ✅ You will use each tool only for lawful and authorized purposes
 5. ✅ You accept full responsibility and liability for your actions
 6. ✅ You release the authors from all liability and claims
-7. ✅ You understand that violations may result in criminal prosecution
+7. ✅ You understand violations may result in criminal prosecution
 8. ✅ You have consulted legal counsel if uncertain about your jurisdiction's laws
+9. ✅ You understand each tool's specific risks and capabilities
+10. ✅ You will not use these tools for unauthorized network interference
 
 ---
 
-**Last Updated:** 2026-06-13  
+**Last Updated:** 2026-06-14
 **Status:** Strictly Educational & Authorized Use Only
-
----
-
-## Summary Table of Rules
-
-| Rule | Requirement | Consequence |
-|------|-------------|------------|
-| Authorization | Must have written permission | Criminal liability |
-| Scope Compliance | Only test authorized networks | CFAA violations |
-| No Attacks | Cannot use for unauthorized interference | Up to 10 years imprisonment |
-| No Malicious Intent | Cannot target data or privacy | Civil & criminal penalties |
-| Data Protection | Must comply with GDPR/CCPA/HIPAA | Substantial fines |
-| Responsible Disclosure | Report vulnerabilities responsibly | Professional liability |
-| Documentation | Maintain records of authorization | Compliance failure |
-| Legal Compliance | Follow all applicable laws | Prosecution |
-| Termination | Cease use if violation occurs | Immediate revocation |
-| Full Responsibility | Accept liability for all actions | No author protection |
-
----
 
 ⚠️ **READ THIS CAREFULLY. YOUR LEGAL FREEDOM DEPENDS ON IT.**
 
-This software requires authorized use. Unauthorized use is a federal crime in most countries.  
+This software requires authorized use. Unauthorized use is a federal crime in most countries.
 If you're unsure whether your intended use is legal, **stop and consult a lawyer immediately.**
-
